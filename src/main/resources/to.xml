@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<class>
+    <bank id="1">
+        <name>Privatbank</name>
+        <phone>0982383744</phone>
+    </bank>
+    <bank id="2">
+        <name>Monobank</name>
+        <phone>0974329211</phone>
+    </bank>
+    <bank id="3">
+        <name>Ukrbank</name>
+        <phone>0975683244</phone>
+    </bank>
+</class>
