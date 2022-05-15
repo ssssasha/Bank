@@ -11,6 +11,15 @@ public class CardTypes {
     public CardTypes() {
     }
 
+    public CardTypes(String name) {
+        this.name = name;
+    }
+
+    public CardTypes(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public CardTypes(int id, String name, List<Cards> cards) {
         this.id = id;
         this.name = name;
@@ -39,5 +48,10 @@ public class CardTypes {
 
     public void setCards(List<Cards> cards) {
         this.cards = cards;
+    }
+
+    @Override
+    public String toString() {
+        return "\n id: " + getId()+ "\n " + "name: " + getName();
     }
 }

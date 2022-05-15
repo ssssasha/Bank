@@ -11,6 +11,15 @@ public class Cities {
     public Cities() {
     }
 
+    public Cities(String name) {
+        this.name = name;
+    }
+
+    public Cities(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Cities(int id, String name, List<Addresses> addresses) {
         this.id = id;
         this.name = name;
@@ -39,5 +48,10 @@ public class Cities {
 
     public void setAddresses(List<Addresses> addresses) {
         this.addresses = addresses;
+    }
+
+    @Override
+    public String toString() {
+        return "\n id: " + getId()+ "\n " + "name: " + getName();
     }
 }

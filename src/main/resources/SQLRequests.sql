@@ -12,7 +12,7 @@ INSERT INTO clients (name, surname, age, addressId)
 VALUES ('Ivan', 'Petrenko', 26, 3), ('Maria', 'Shevchenko',31,1), ('Olena', 'Bondarenko', 22, 2), ('Nadia', 'Melnyk', 34, 5), ('Oleg', 'Melnyk', 41, 5), ('Ivan', 'Kovalenko',28, 6);
 
 INSERT INTO banks (name, phoneNumber)
-VALUES ('PrivatBank', 0984562312), ('Monobank', 0964532245), ('Ukrbank', 0975462132), ('Alfabank', 0985437744);
+VALUES ('PrivatBank', '+0984562312'), ('Monobank', '+0964532245'), ('Ukrbank', '+0975462132'), ('Alfabank', '+0985437744');
 
 INSERT INTO accounttypes (name)
 VALUES ('current account'), ('savings account'), ('salary account');

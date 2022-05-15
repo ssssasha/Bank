@@ -40,4 +40,9 @@ public class AccountTypes {
     public void setAccounts(List<Accounts> accounts) {
         this.accounts = accounts;
     }
+
+    @Override
+    public String toString() {
+        return "\n id: " + getId()+ "\n " + "name: " + getName();
+    }
 }

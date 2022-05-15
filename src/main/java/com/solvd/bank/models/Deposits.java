@@ -3,6 +3,8 @@ package com.solvd.bank.models;
 public class Deposits {
 
     private int id;
+    private int clientId;
+    private int bankId;
     private int minimumContribution;
     private int percentagePerAnnum;
     private int term;
@@ -12,8 +14,27 @@ public class Deposits {
     public Deposits() {
     }
 
-    public Deposits(int id, int minimumContribution, int percentagePerAnnum, int term, Clients client, Banks bank) {
+    public Deposits(int clientId, int bankId, int minimumContribution, int percentagePerAnnum, int term) {
+        this.clientId = clientId;
+        this.bankId = bankId;
+        this.minimumContribution = minimumContribution;
+        this.percentagePerAnnum = percentagePerAnnum;
+        this.term = term;
+    }
+
+    public Deposits(int id, int clientId, int bankId, int minimumContribution, int percentagePerAnnum, int term) {
         this.id = id;
+        this.clientId = clientId;
+        this.bankId = bankId;
+        this.minimumContribution = minimumContribution;
+        this.percentagePerAnnum = percentagePerAnnum;
+        this.term = term;
+    }
+
+    public Deposits(int id, int clientId, int bankId, int minimumContribution, int percentagePerAnnum, int term, Clients client, Banks bank) {
+        this.id = id;
+        this.clientId = clientId;
+        this.bankId = bankId;
         this.minimumContribution = minimumContribution;
         this.percentagePerAnnum = percentagePerAnnum;
         this.term = term;
@@ -27,6 +48,22 @@ public class Deposits {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
+    }
+
+    public int getBankId() {
+        return bankId;
+    }
+
+    public void setBankId(int bankId) {
+        this.bankId = bankId;
     }
 
     public int getMinimumContribution() {
@@ -67,5 +104,10 @@ public class Deposits {
 
     public void setBank(Banks bank) {
         this.bank = bank;
+    }
+
+    @Override
+    public String toString() {
+        return "\n id: " + getId()+ "\n " + "minimumContribution: " + getMinimumContribution() + "\n " + "term: " + getTerm();
     }
 }

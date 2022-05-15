@@ -5,6 +5,8 @@ import java.util.List;
 public class Addresses {
 
     private int id;
+    private int cityId;
+    private int streetId;
     private int buildingNumber;
     private Cities city;
     private Streets street;
@@ -14,7 +16,25 @@ public class Addresses {
     public Addresses() {
     }
 
-    public Addresses(int id, int buildingNumber, Cities city, Streets street, List<ATMs> atms, List<Clients> clients) {
+    public Addresses(int id){
+        this.id = id;
+    }
+
+    public Addresses(int cityId, int streetId, int buildingNumber){
+        this.cityId = cityId;
+        this.streetId = streetId;
+        this.buildingNumber = buildingNumber;
+    }
+
+    public Addresses(int id, int cityId, int streetId, int buildingNumber){
+        this.id = id;
+        this.cityId = cityId;
+        this.streetId = streetId;
+        this.buildingNumber = buildingNumber;
+    }
+
+    public Addresses(int id, int cityId, int streetId, int buildingNumber, Cities city, Streets street, List<ATMs> atms,
+                     List<Clients> clients) {
         this.id = id;
         this.buildingNumber = buildingNumber;
         this.city = city;
@@ -31,7 +51,23 @@ public class Addresses {
         this.id = id;
     }
 
-    public int getBuildingNumberNumber() {
+    public int getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
+    }
+
+    public int getStreetId() {
+        return streetId;
+    }
+
+    public void setStreetId(int streetId) {
+        this.streetId = streetId;
+    }
+
+    public int getBuildingNumber() {
         return buildingNumber;
     }
 
@@ -69,6 +105,11 @@ public class Addresses {
 
     public void setClients(List<Clients> clients) {
         this.clients = clients;
+    }
+
+    @Override
+    public String toString() {
+        return "\n id: " + getId()+ "\n" + "streetId: " + getStreetId();
     }
 
 }

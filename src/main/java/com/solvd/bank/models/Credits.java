@@ -3,7 +3,10 @@ package com.solvd.bank.models;
 public class Credits {
 
     private int id;
-    private int rate;
+    private int clientId;
+    private int bankId;
+    private int creditTypeId;
+    private double rate;
     private int term;
     private int maximumAmount;
     private Clients client;
@@ -13,8 +16,30 @@ public class Credits {
     public Credits() {
     }
 
-    public Credits(int id, int rate, int term, int maximumAmount, Clients client, Banks bank, CreditTypes creditType) {
+    public Credits(int clientId, int bankId, int creditTypeId, double rate, int term, int maximumAmount) {
+        this.clientId = clientId;
+        this.bankId = bankId;
+        this.creditTypeId = creditTypeId;
+        this.rate = rate;
+        this.term = term;
+        this.maximumAmount = maximumAmount;
+    }
+
+    public Credits(int id, int clientId, int bankId, int creditTypeId, double rate, int term, int maximumAmount) {
         this.id = id;
+        this.clientId = clientId;
+        this.bankId = bankId;
+        this.creditTypeId = creditTypeId;
+        this.rate = rate;
+        this.term = term;
+        this.maximumAmount = maximumAmount;
+    }
+
+    public Credits(int id, int clientId, int bankId, int creditTypeId, double rate, int term, int maximumAmount, Clients client, Banks bank, CreditTypes creditType) {
+        this.id = id;
+        this.clientId = clientId;
+        this.bankId = bankId;
+        this.creditTypeId = creditTypeId;
         this.rate = rate;
         this.term = term;
         this.maximumAmount = maximumAmount;
@@ -31,11 +56,35 @@ public class Credits {
         this.id = id;
     }
 
-    public int getRate() {
+    public int getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
+    }
+
+    public int getBankId() {
+        return bankId;
+    }
+
+    public void setBankId(int bankId) {
+        this.bankId = bankId;
+    }
+
+    public int getCreditTypeId() {
+        return creditTypeId;
+    }
+
+    public void setCreditTypeId(int creditTypeId) {
+        this.creditTypeId = creditTypeId;
+    }
+
+    public double getRate() {
         return rate;
     }
 
-    public void setRater(int rate) {
+    public void setRate(double rate) {
         this.rate = rate;
     }
 
@@ -77,5 +126,10 @@ public class Credits {
 
     public void setCreditType(CreditTypes creditType) {
         this.creditType = creditType;
+    }
+
+    @Override
+    public String toString() {
+        return "\n id: " + getId()+ "\n " + "term: " + getTerm();
     }
 }

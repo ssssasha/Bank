@@ -13,6 +13,19 @@ public class Schedules {
     public Schedules() {
     }
 
+    public Schedules(String openingTime, String closingTime, String day) {
+        this.openingTime = openingTime;
+        this.closingTime = closingTime;
+        this.day = day;
+    }
+
+    public Schedules(int id, String openingTime, String closingTime, String day) {
+        this.id = id;
+        this.openingTime = openingTime;
+        this.closingTime = closingTime;
+        this.day = day;
+    }
+
     public Schedules(int id, String openingTime, String closingTime, String day, List<Departments> departments) {
         this.id = id;
         this.openingTime = openingTime;
@@ -59,5 +72,11 @@ public class Schedules {
 
     public void setDepartments(List<Departments> departments) {
         this.departments = departments;
+    }
+
+    @Override
+    public String toString() {
+        return "\n id: " + getId() +  "\n " + "day: " + getDay() + "\n " + "openingTime: " + getOpeningTime()
+                + "\n " + "closingTime: " + getClosingTime();
     }
 }

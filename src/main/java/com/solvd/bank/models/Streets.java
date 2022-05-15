@@ -4,15 +4,33 @@ import java.util.List;
 
 public class Streets {
 
-    private long id;
+    private int id;
     private String name;
     private List<Addresses> addresses;
 
-    public long getId() {
+    public Streets(){
+    };
+
+    public Streets(String name) {
+        this.name = name;
+    }
+
+    public Streets(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Streets(int id, String name, List<Addresses> addresses) {
+        this.id = id;
+        this.name = name;
+        this.addresses = addresses;
+    }
+
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -30,5 +48,10 @@ public class Streets {
 
     public void setAddresses(List<Addresses> addresses) {
         this.addresses = addresses;
+    }
+
+    @Override
+    public String toString() {
+        return "\n id: " + getId()+ "\n " + "name: " + getName();
     }
 }

@@ -11,6 +11,15 @@ public class CreditTypes {
     public CreditTypes() {
     }
 
+    public CreditTypes(String name) {
+        this.name = name;
+    }
+
+    public CreditTypes(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public CreditTypes(int id, String name, List<Credits> credits) {
         this.id = id;
         this.name = name;
@@ -39,5 +48,10 @@ public class CreditTypes {
 
     public void setCredits(List<Credits> credits) {
         this.credits = credits;
+    }
+
+    @Override
+    public String toString() {
+        return "\n id: " + getId()+ "\n " + "name: " + getName();
     }
 }
