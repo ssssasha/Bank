@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<schedule id="1">
+    <closingTime>17:00</closingTime>
+    <day>Monday</day>
+    <openingTime>8:00</openingTime>
+</schedule>

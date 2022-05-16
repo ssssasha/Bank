@@ -51,7 +51,7 @@ public class Schedules {
     }
 
     public String getClosingTime() {
-        return openingTime;
+        return closingTime;
     }
 
     public void setClosingTime(String closingTime) {
