@@ -22,8 +22,8 @@ public class AddressesDAO extends AbstractDAO implements IAddressesDAO {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     address.setId(resultSet.getInt("id"));
-                    address.setCityId(resultSet.getInt("cityId"));
-                    address.setStreetId(resultSet.getInt("streetId"));
+                    address.setCities(new CitiesDAO().getCityByID(resultSet.getInt("cityId")));
+                    address.setStreets(new StreetsDAO().getStreetByID(resultSet.getInt("streetId")));
                     address.setBuildingNumber(resultSet.getInt("buildingNumber"));
                 }
             }
@@ -38,8 +38,8 @@ public class AddressesDAO extends AbstractDAO implements IAddressesDAO {
         try {
             PreparedStatement statement = getConnection().prepareStatement("INSERT INTO " +
                     "addresses (cityId,streetId,buildingNumber) VALUES (?,?,?)");
-            statement.setInt(1, address.getCityId());
-            statement.setInt(2, address.getStreetId());
+            statement.setInt(1, address.getCities().getId());
+            statement.setInt(2, address.getStreets().getId());
             statement.setInt(3, address.getBuildingNumber());
             int st = statement.executeUpdate();
             LOGGER.info(st + " records inserted");
@@ -54,8 +54,8 @@ public class AddressesDAO extends AbstractDAO implements IAddressesDAO {
         try {
             PreparedStatement statement = getConnection().prepareStatement("UPDATE addresses SET cityId = ?, " +
                     "streetId = ?, buildingNumber = ? WHERE id = ?");
-            statement.setInt(1, address.getCityId());
-            statement.setInt(2, address.getStreetId());
+            statement.setInt(1, address.getCities().getId());
+            statement.setInt(2, address.getStreets().getId());
             statement.setInt(3, address.getBuildingNumber());
             statement.setInt(4, address.getId());
             statement.executeUpdate();
@@ -88,7 +88,7 @@ public class AddressesDAO extends AbstractDAO implements IAddressesDAO {
             while (resultSet.next()){
                 Addresses address = new Addresses();
                 address.setId(resultSet.getInt("addresses.id"));
-                address.setStreetId(resultSet.getInt("streets.id"));
+                address.setStreets(new StreetsDAO().getStreetByID(resultSet.getInt("streets.id")));
                 addressesList.add(address);
             }
         }catch (SQLException throwables){

@@ -3,29 +3,23 @@ package com.solvd.bank.models;
 public class ATMs {
 
     private int id;
-    private int bankId;
-    private int addressId;
     private Banks bank;
     private Addresses address;
 
     public ATMs() {
     }
 
-    public ATMs(int bankId, int addressId) {
-        this.bankId = bankId;
-        this.addressId = addressId;
+    public ATMs(int id) {
+        this.id = id;
     }
 
-    public ATMs(int id, int bankId, int addressId) {
-        this.id = id;
-        this.bankId = bankId;
-        this.addressId = addressId;
+    public ATMs(Banks bank, Addresses address) {
+        this.bank = bank;
+        this.address = address;
     }
 
-    public ATMs(int id, int bankId, int addressId, Banks bank, Addresses address) {
+    public ATMs(int id, Banks bank, Addresses address) {
         this.id = id;
-        this.bankId = bankId;
-        this.addressId = addressId;
         this.bank = bank;
         this.address = address;
     }
@@ -36,22 +30,6 @@ public class ATMs {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getBankId() {
-        return bankId;
-    }
-
-    public void setBankId(int bankId) {
-        this.bankId = bankId;
-    }
-
-    public int getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(int addressId) {
-        this.id = addressId;
     }
 
     public Banks getBank() {
@@ -72,6 +50,6 @@ public class ATMs {
 
     @Override
     public String toString() {
-        return "\n id: " + getId()+ "\n " + "bankId: " + getBankId();
+        return "\n id: " + getId() + "\n\n" + "bankId: " + getBank() + "\n\n" + "addressId: " + getAddress();
     }
 }

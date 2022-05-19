@@ -9,7 +9,7 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.util.ResourceBundle;
 
-public class AbstractDAO {
+public abstract class AbstractDAO {
 
     private Statement statement;
     protected ResultSet resultSet;

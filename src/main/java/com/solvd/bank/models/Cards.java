@@ -3,33 +3,27 @@ package com.solvd.bank.models;
 public class Cards {
 
     private int id;
-    private int cardTypeId;
-    private int clientId;
-    private String number;
-    private Clients client;
     private CardTypes cardType;
+    private Clients client;
+    private String number;
 
     public Cards() {
     }
 
-    public Cards(int cardTypeId, int clientId) {
-        this.cardTypeId = cardTypeId;
-        this.clientId = clientId;
+    public Cards(int cardType, int client) {
+
     }
 
-    public Cards(int id, int cardTypeId, int clientId) {
+    public Cards(int id, int cardType, int client) {
         this.id = id;
-        this.cardTypeId = cardTypeId;
-        this.clientId = clientId;
+
     }
 
-    public Cards(int id, int cardTypeId, int clientId, String number, Clients client, CardTypes cardType) {
+    public Cards(int id , CardTypes cardType , Clients client , String number) {
         this.id = id;
-        this.cardTypeId = cardTypeId;
-        this.clientId = clientId;
-        this.number = number;
-        this.client = client;
         this.cardType = cardType;
+        this.client = client;
+        this.number = number;
     }
 
     public int getId() {
@@ -38,22 +32,6 @@ public class Cards {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getCardTypeId() {
-        return cardTypeId;
-    }
-
-    public void setCardTypeId(int cardTypeId) {
-        this.cardTypeId = cardTypeId;
-    }
-
-    public int getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
     }
 
     public String getNumber() {
@@ -82,6 +60,7 @@ public class Cards {
 
     @Override
     public String toString() {
-        return "\n id: " + getId()+ "\n " + "number: " + getNumber();
+        return "\n id: " + getId()  + "\n\n " + "card type: " + getCardType()  + "\n\n " + "client: " + getClient()
+                + "\n\n " + "number: " + getNumber();
     }
 }

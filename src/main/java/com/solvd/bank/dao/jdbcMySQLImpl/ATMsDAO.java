@@ -23,8 +23,8 @@ public class ATMsDAO extends AbstractDAO implements IATMsDAO {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     atm.setId(resultSet.getInt("id"));
-                    atm.setBankId(resultSet.getInt("bankId"));
-                    atm.setAddressId(resultSet.getInt("addressId"));
+                    atm.setBank(new BanksDAO().getBankByID(resultSet.getInt("bankId")));
+                    atm.setAddress(new AddressesDAO().getAddressByID(resultSet.getInt("addressId")));
                 }
             }
         }catch (SQLException throwables){
@@ -38,8 +38,8 @@ public class ATMsDAO extends AbstractDAO implements IATMsDAO {
         try {
             PreparedStatement statement = getConnection().prepareStatement("INSERT INTO " +
                     "atms (bankId,addressId) VALUES (?,?)");
-            statement.setInt(1, atm.getBankId());
-            statement.setInt(2, atm.getAddressId());
+            statement.setInt(1, atm.getBank().getId());
+            statement.setInt(2, atm.getAddress().getId());
             int st = statement.executeUpdate();
             LOGGER.info(st + " records inserted");
         } catch (SQLException throwables) {
@@ -53,8 +53,8 @@ public class ATMsDAO extends AbstractDAO implements IATMsDAO {
         try {
             PreparedStatement statement = getConnection().prepareStatement("UPDATE atms SET bankId = ?, addressId = ? " +
                     "WHERE id = ?");
-            statement.setInt(1, atm.getBankId());
-            statement.setInt(2, atm.getAddressId());
+            statement.setInt(1, atm.getBank().getId());
+            statement.setInt(2, atm.getAddress().getId());
             statement.setInt(3, atm.getId());
             statement.executeUpdate();
             LOGGER.info("Successfully updated");
@@ -86,7 +86,7 @@ public class ATMsDAO extends AbstractDAO implements IATMsDAO {
             while (resultSet.next()){
                 ATMs atm = new ATMs();
                 atm.setId(resultSet.getInt("id"));
-                atm.setBankId(resultSet.getInt("banks.id"));
+                atm.setBank(new BanksDAO().getBankByID(resultSet.getInt("banks.id")));
                 atmsList.add(atm);
             }
         }catch (SQLException throwables){

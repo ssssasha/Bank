@@ -25,8 +25,8 @@ public class DepositsDAO extends AbstractDAO implements IDepositsDAO {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     deposit.setId(resultSet.getInt("id"));
-                    deposit.setClientId(resultSet.getInt("clientId"));
-                    deposit.setBankId(resultSet.getInt("bankId"));
+                    deposit.setClient(new ClientsDAO().getClientByID(resultSet.getInt("clientId")));
+                    deposit.setBank(new BanksDAO().getBankByID(resultSet.getInt("bankId")));
                     deposit.setMinimumContribution(resultSet.getInt("minimumContribution"));
                     deposit.setPercentagePerAnnum(resultSet.getInt("percentagePerAnnum"));
                     deposit.setTerm(resultSet.getInt("term"));
@@ -43,8 +43,8 @@ public class DepositsDAO extends AbstractDAO implements IDepositsDAO {
         try {
             PreparedStatement statement = getConnection().prepareStatement("INSERT INTO " +
                     "deposits (clientId, bankId, minimumContribution, percentagePerAnnum, term) VALUES (?,?,?,?,?)");
-            statement.setInt(1, deposit.getClientId());
-            statement.setInt(2, deposit.getBankId());
+            statement.setInt(1, deposit.getClient().getId());
+            statement.setInt(2, deposit.getBank().getId());
             statement.setInt(3, deposit.getMinimumContribution());
             statement.setInt(4, deposit.getPercentagePerAnnum());
             statement.setInt(5, deposit.getTerm());
@@ -60,8 +60,8 @@ public class DepositsDAO extends AbstractDAO implements IDepositsDAO {
     public void updateDeposit(Deposits deposit) {
         try {
             PreparedStatement statement = getConnection().prepareStatement("UPDATE deposits SET clientId = ?, bankId = ?, minimumContribution = ?, percentagePerAnnum = ?, term = ? WHERE id = ?");
-            statement.setInt(1, deposit.getClientId());
-            statement.setInt(2, deposit.getBankId());
+            statement.setInt(1, deposit.getClient().getId());
+            statement.setInt(2, deposit.getBank().getId());
             statement.setInt(3, deposit.getMinimumContribution());
             statement.setInt(4, deposit.getPercentagePerAnnum());
             statement.setInt(5, deposit.getTerm());
@@ -91,14 +91,17 @@ public class DepositsDAO extends AbstractDAO implements IDepositsDAO {
     public List<Deposits> getDeposits(int minimumContribution, int term){
         List<Deposits> depositsList  = new ArrayList<>();
         try {
-            PreparedStatement statement = getConnection().prepareStatement("SELECT id, minimumContribution, term FROM deposits WHERE   minimumContribution < ? AND term > ?");
+            PreparedStatement statement = getConnection().prepareStatement("SELECT * FROM deposits WHERE   minimumContribution < ? AND term > ?");
             statement.setInt(1, minimumContribution);
             statement.setInt(2, term);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()){
                 Deposits deposit = new Deposits();
                 deposit.setId(resultSet.getInt("id"));
+                deposit.setClient(new ClientsDAO().getClientByID(resultSet.getInt("clientId")));
+                deposit.setBank(new BanksDAO().getBankByID(resultSet.getInt("bankId")));
                 deposit.setMinimumContribution(resultSet.getInt("minimumContribution"));
+                deposit.setPercentagePerAnnum(resultSet.getInt("percentagePerAnnum"));
                 deposit.setTerm(resultSet.getInt("term"));
                 depositsList.add(deposit);
             }

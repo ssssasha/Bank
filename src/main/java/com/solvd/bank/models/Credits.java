@@ -3,50 +3,35 @@ package com.solvd.bank.models;
 public class Credits {
 
     private int id;
-    private int clientId;
-    private int bankId;
-    private int creditTypeId;
-    private double rate;
-    private int term;
-    private int maximumAmount;
     private Clients client;
     private Banks bank;
     private CreditTypes creditType;
+    private double rate;
+    private int term;
+    private int maximumAmount;
 
     public Credits() {
     }
 
-    public Credits(int clientId, int bankId, int creditTypeId, double rate, int term, int maximumAmount) {
-        this.clientId = clientId;
-        this.bankId = bankId;
-        this.creditTypeId = creditTypeId;
-        this.rate = rate;
-        this.term = term;
-        this.maximumAmount = maximumAmount;
-    }
-
-    public Credits(int id, int clientId, int bankId, int creditTypeId, double rate, int term, int maximumAmount) {
-        this.id = id;
-        this.clientId = clientId;
-        this.bankId = bankId;
-        this.creditTypeId = creditTypeId;
-        this.rate = rate;
-        this.term = term;
-        this.maximumAmount = maximumAmount;
-    }
-
-    public Credits(int id, int clientId, int bankId, int creditTypeId, double rate, int term, int maximumAmount, Clients client, Banks bank, CreditTypes creditType) {
-        this.id = id;
-        this.clientId = clientId;
-        this.bankId = bankId;
-        this.creditTypeId = creditTypeId;
-        this.rate = rate;
-        this.term = term;
-        this.maximumAmount = maximumAmount;
+    public Credits(Clients client, Banks bank, CreditTypes creditType, double rate, int term, int maximumAmount) {
         this.client = client;
         this.bank = bank;
         this.creditType = creditType;
+        this.rate = rate;
+        this.term = term;
+        this.maximumAmount = maximumAmount;
     }
+
+    public Credits(int id, Clients client, Banks bank, CreditTypes creditType, double rate, int term, int maximumAmount) {
+        this.id = id;
+        this.client = client;
+        this.bank = bank;
+        this.creditType = creditType;
+        this.rate = rate;
+        this.term = term;
+        this.maximumAmount = maximumAmount;
+    }
+
 
     public int getId() {
         return id;
@@ -54,30 +39,6 @@ public class Credits {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
-    }
-
-    public int getBankId() {
-        return bankId;
-    }
-
-    public void setBankId(int bankId) {
-        this.bankId = bankId;
-    }
-
-    public int getCreditTypeId() {
-        return creditTypeId;
-    }
-
-    public void setCreditTypeId(int creditTypeId) {
-        this.creditTypeId = creditTypeId;
     }
 
     public double getRate() {
@@ -130,6 +91,8 @@ public class Credits {
 
     @Override
     public String toString() {
-        return "\n id: " + getId()+ "\n " + "term: " + getTerm();
+        return "\n id: " + getId() + "\n\n " + "Client: " + getClient() + "\n\n " + "Bank: "
+                + getBank() + "\n\n " + "CreditType: " + getCreditType()+ "\n\n " + "Rate: " + getRate()
+                +  "\n " + "term: " + getTerm() + "\n " + "Maximum amount: " + getMaximumAmount();
     }
 }

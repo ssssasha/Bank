@@ -38,18 +38,23 @@ public class Main {
 //            LOGGER.info(el);
 //        }
 //
-//        // creating
-////        AccountsDAO createAccountsDAO = new AccountsDAO();
-////        Accounts newAccount = new Accounts(1, 1,"7682324428");
-////        createAccountsDAO.createAccount(newAccount);
-//
-//        //getting a list of Accounts by client id
-//        AccountsDAO accounts = new AccountsDAO();
-//        List<Accounts> accountsList;
-//        accountsList = accounts.getAccountByClientId(1);
-//        for (Accounts el : accountsList){
-//            LOGGER.info(el);
-//        }
+//        //creating
+//          AccountsDAO createAccountsDAO = new AccountsDAO();
+//          Clients client = new Clients();
+//          Accounts newAccount = new Accounts(new ClientsDAO().getClientByID(3), new AccountTypesDAO().getAccountTypeByID(2),"7122324333");
+//          createAccountsDAO.createAccount(newAccount);
+
+        //getting a list of Accounts by client id
+        AccountsDAO accounts = new AccountsDAO();
+        List<Accounts> accountsList;
+        accountsList = accounts.getAccountByClientId(3);
+        for (Accounts el : accountsList){
+            LOGGER.info(el);
+        }
+        //deleting
+//        AccountsDAO deleteAccountsDAO = new AccountsDAO();
+//        Accounts acountToDelete = new Accounts(149);
+//        deleteAccountsDAO.deleteAccount(acountToDelete);
 //
 //        //getting a list of all account types
 //        AccountTypesDAO accountTypes = new AccountTypesDAO();
@@ -75,14 +80,14 @@ public class Main {
 //            LOGGER.info(el);
 //        }
 
-        // getClientsWithNullCredit
-        ClientsDAO clientsDAO =new ClientsDAO();
-        List<Clients> clientsList = new ArrayList<>();
-        clientsList = clientsDAO.getClientsWithNullCredit();
-        for (Clients el:clientsList){
-            LOGGER.info("\n name: "+el.getName() + "\n surname: " + el.getSurname() + "\n id: " + el.getId());
-        }
-
+//        // getClientsWithNullCredit
+//        ClientsDAO clientsDAO =new ClientsDAO();
+//        List<Clients> clientsList = new ArrayList<>();
+//        clientsList = clientsDAO.getClientsWithNullCredit();
+//        for (Clients el:clientsList){
+//            LOGGER.info("\n name: "+el.getName() + "\n surname: " + el.getSurname() + "\n id: " + el.getId());
+//        }
+//
         //getCards
         ICardsDAO cardDAO = new CardsDAO();
         List<Cards> cardsList = new ArrayList<>();
@@ -90,23 +95,24 @@ public class Main {
         for (Cards el: cardsList){
             LOGGER.info(el);
         }
-
-        //getting a list of Deposits
-        DepositsDAO depositsDAO = new DepositsDAO();
-        List<Deposits> depositsList;
-        depositsList = depositsDAO.getDeposits(30000,12);
-        for (Deposits el : depositsList){
-            LOGGER.info(el);
-        }
-
-        //getting a list of Schedules by day
-        SchedulesDAO schedulesDAO = new SchedulesDAO();
-        List<Schedules> schedulesList;
-        schedulesList = schedulesDAO.getScheduleByDay("Monday");
-        for (Schedules el : schedulesList){
-            LOGGER.info(el);
-        }
-
-
+//
+//        //getting a list of Deposits
+//        DepositsDAO depositsDAO = new DepositsDAO();
+//        List<Deposits> depositsList;
+//        depositsList = depositsDAO.getDeposits(30000,12);
+//        for (Deposits el : depositsList){
+//            LOGGER.info(el);
+//        }
+//
+//        //getting a list of Schedules by day
+//        SchedulesDAO schedulesDAO = new SchedulesDAO();
+//        List<Schedules> schedulesList;
+//        schedulesList = schedulesDAO.getScheduleByDay("Monday");
+//        for (Schedules el : schedulesList){
+//            LOGGER.info(el);
+//        }
+        //reading
+//        CreditsDAO getCreditsDAO = new CreditsDAO();
+//        LOGGER.info(getCreditsDAO.getCreditByID(1));
     }
 }

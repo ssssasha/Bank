@@ -7,7 +7,6 @@ public class Clients {
     private String name;
     private String surname;
     private int age;
-    private int addressId;
     private Addresses address;
     private List<Cards> cards;
     private List<Deposits> deposits;
@@ -17,28 +16,27 @@ public class Clients {
     public Clients() {
     }
 
-    public Clients(String name, String surname, int age, int addressId) {
+    public Clients(String name, String surname, int age, Addresses address) {
         this.name = name;
         this.surname = surname;
         this.age = age;
-        this.addressId = addressId;
+        this.address = address;
     }
 
-    public Clients(int id, String name, String surname, int age, int addressId) {
+    public Clients(int id, String name, String surname, int age, Addresses address) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.age = age;
-        this.addressId = addressId;
+        this.address = address;
     }
 
-    public Clients(int id, String name, String surname, int age, int addressId, Addresses address, List<Cards> cards,
+    public Clients(int id, String name, String surname, int age, Addresses address, List<Cards> cards,
                    List<Deposits> deposits, List<Credits> credits, List<Accounts> accounts) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.age = age;
-        this.addressId = addressId;
         this.address = address;
         this.cards = cards;
         this.deposits = deposits;
@@ -76,14 +74,6 @@ public class Clients {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public int getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
     }
 
     public Addresses getAddress() {
@@ -128,6 +118,7 @@ public class Clients {
 
     @Override
     public String toString() {
-        return "\n id: " + getId()+ "\n " + "name: " + getName() + "\n " + "surname: " + getSurname();
+        return "\n id: " + getId()+ "\n " + "name: " + getName() + "\n " + "surname: " + getSurname()
+                + "\n " + "age: " + getAge() + "\n\n " + "address: " + getAddress();
     }
 }

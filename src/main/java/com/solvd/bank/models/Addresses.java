@@ -5,11 +5,9 @@ import java.util.List;
 public class Addresses {
 
     private int id;
-    private int cityId;
-    private int streetId;
-    private int buildingNumber;
     private Cities city;
     private Streets street;
+    private int buildingNumber;
     private List<ATMs> atms;
     private List<Clients> clients;
 
@@ -20,23 +18,22 @@ public class Addresses {
         this.id = id;
     }
 
-    public Addresses(int cityId, int streetId, int buildingNumber){
-        this.cityId = cityId;
-        this.streetId = streetId;
+    public Addresses(Cities city, Streets street, int buildingNumber){
+        this.city = city;
+        this.street = street;
         this.buildingNumber = buildingNumber;
     }
 
-    public Addresses(int id, int cityId, int streetId, int buildingNumber){
+    public Addresses(int id, Cities city, Streets street, int buildingNumber){
         this.id = id;
-        this.cityId = cityId;
-        this.streetId = streetId;
+        this.city = city;
+        this.street = street;
         this.buildingNumber = buildingNumber;
     }
 
-    public Addresses(int id, int cityId, int streetId, int buildingNumber, Cities city, Streets street, List<ATMs> atms,
+    public Addresses(int id, Cities city, Streets street, int buildingNumber, List<ATMs> atms,
                      List<Clients> clients) {
         this.id = id;
-        this.buildingNumber = buildingNumber;
         this.city = city;
         this.street = street;
         this.atms = atms;
@@ -49,22 +46,6 @@ public class Addresses {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getCityId() {
-        return cityId;
-    }
-
-    public void setCityId(int cityId) {
-        this.cityId = cityId;
-    }
-
-    public int getStreetId() {
-        return streetId;
-    }
-
-    public void setStreetId(int streetId) {
-        this.streetId = streetId;
     }
 
     public int getBuildingNumber() {
@@ -109,7 +90,8 @@ public class Addresses {
 
     @Override
     public String toString() {
-        return "\n id: " + getId()+ "\n" + "streetId: " + getStreetId();
+        return "\n id: " + getId() + "\n\n" + "city: " + getCities() + "\n\n" + "street: " + getStreets()
+                + "\n\n" + "building number: " + getBuildingNumber();
     }
 
 }

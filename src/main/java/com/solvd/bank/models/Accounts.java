@@ -16,26 +16,17 @@ public class Accounts {
         this.id = id;
     }
 
-    public Accounts(int clientId, int accountTypeId, String number) {
-        this.clientId = clientId;
-        this.accountTypeId = accountTypeId;
-        this.number = number;
-    }
-
-    public Accounts(int id, int clientId, int accountTypeId, String number) {
-        this.id = id;
-        this.clientId = clientId;
-        this.accountTypeId = accountTypeId;
-        this.number = number;
-    }
-
-    public Accounts(int id, int clientId, int accountTypeId, String number, Clients client, AccountTypes accountType) {
-        this.id = id;
-        this.clientId = clientId;
-        this.accountTypeId = accountTypeId;
-        this.number = number;
+    public Accounts(Clients client, AccountTypes accountType, String number) {
         this.client = client;
         this.accountType = accountType;
+        this.number = number;
+    }
+
+    public Accounts(int id, Clients client, AccountTypes accountType, String number) {
+        this.id = id;
+        this.client = client;
+        this.accountType = accountType;
+        this.number = number;
     }
 
     public int getId() {
@@ -44,22 +35,6 @@ public class Accounts {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
-    }
-
-    public int getAccountTypeId() {
-        return accountTypeId;
-    }
-
-    public void setAccountTypeId(int accountTypeId) {
-        this.accountTypeId = accountTypeId;
     }
 
     public String getNumber() {
@@ -88,7 +63,7 @@ public class Accounts {
 
     @Override
     public String toString() {
-        return "\n id: " + getId()+ "\n " + "clientId: " + getClientId() + "\n " + "accountTypeId: " + getAccountTypeId()
-                + "\n " + "number: " + getNumber();
+        return "\n id: " + getId()+ "\n\n " + "client: " + getClient() + "\n\n " + "accountType: " + getAccountType()
+                + "\n\n " + "number: " + getNumber();
     }
 }

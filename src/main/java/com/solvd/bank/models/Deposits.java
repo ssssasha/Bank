@@ -3,43 +3,31 @@ package com.solvd.bank.models;
 public class Deposits {
 
     private int id;
-    private int clientId;
-    private int bankId;
+    private Clients client;
+    private Banks bank;
     private int minimumContribution;
     private int percentagePerAnnum;
     private int term;
-    private Clients client;
-    private Banks bank;
 
     public Deposits() {
     }
 
-    public Deposits(int clientId, int bankId, int minimumContribution, int percentagePerAnnum, int term) {
-        this.clientId = clientId;
-        this.bankId = bankId;
-        this.minimumContribution = minimumContribution;
-        this.percentagePerAnnum = percentagePerAnnum;
-        this.term = term;
-    }
-
-    public Deposits(int id, int clientId, int bankId, int minimumContribution, int percentagePerAnnum, int term) {
-        this.id = id;
-        this.clientId = clientId;
-        this.bankId = bankId;
-        this.minimumContribution = minimumContribution;
-        this.percentagePerAnnum = percentagePerAnnum;
-        this.term = term;
-    }
-
-    public Deposits(int id, int clientId, int bankId, int minimumContribution, int percentagePerAnnum, int term, Clients client, Banks bank) {
-        this.id = id;
-        this.clientId = clientId;
-        this.bankId = bankId;
-        this.minimumContribution = minimumContribution;
-        this.percentagePerAnnum = percentagePerAnnum;
-        this.term = term;
+    public Deposits(Clients client, Banks bank, int minimumContribution, int percentagePerAnnum, int term) {
         this.client = client;
         this.bank = bank;
+        this.minimumContribution = minimumContribution;
+        this.percentagePerAnnum = percentagePerAnnum;
+        this.term = term;
+    }
+
+
+    public Deposits(int id, Clients client, Banks bank, int minimumContribution, int percentagePerAnnum, int term) {
+        this.id = id;
+        this.client = client;
+        this.bank = bank;
+        this.minimumContribution = minimumContribution;
+        this.percentagePerAnnum = percentagePerAnnum;
+        this.term = term;
     }
 
     public int getId() {
@@ -48,22 +36,6 @@ public class Deposits {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getClientId() {
-        return clientId;
-    }
-
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
-    }
-
-    public int getBankId() {
-        return bankId;
-    }
-
-    public void setBankId(int bankId) {
-        this.bankId = bankId;
     }
 
     public int getMinimumContribution() {
@@ -108,6 +80,8 @@ public class Deposits {
 
     @Override
     public String toString() {
-        return "\n id: " + getId()+ "\n " + "minimumContribution: " + getMinimumContribution() + "\n " + "term: " + getTerm();
+        return "\n id: " + getId() + "\n\n " + "client: " + getClient() + "\n\n " + "bank: " + getBank() + "\n\n " +
+                "minimumContribution: " + getMinimumContribution() + "\n " + "percentagePerAnnum: "
+                + getPercentagePerAnnum() + "\n " + "term: " + getTerm();
     }
 }

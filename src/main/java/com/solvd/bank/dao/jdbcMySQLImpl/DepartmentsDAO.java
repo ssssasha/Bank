@@ -25,9 +25,9 @@ public class DepartmentsDAO extends AbstractDAO implements IDepartmentsDAO {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     department.setId(resultSet.getInt("id"));
-                    department.setBankId(resultSet.getInt("bankId"));
-                    department.setAddressId(resultSet.getInt("addressId"));
-                    department.setScheduleId(resultSet.getInt("scheduleId"));
+                    department.setBank(new BanksDAO().getBankByID(resultSet.getInt("bankId")));
+                    department.setAddress(new AddressesDAO().getAddressByID(resultSet.getInt("addressId")));
+                    department.setSchedule(new SchedulesDAO().getScheduleByID(resultSet.getInt("scheduleId")));
                 }
             }
         }catch (SQLException throwables){
@@ -41,9 +41,9 @@ public class DepartmentsDAO extends AbstractDAO implements IDepartmentsDAO {
         try {
             PreparedStatement statement = getConnection().prepareStatement("INSERT INTO " +
                     "departments (bankId,addressId,scheduleId) VALUES (?,?,?)");
-            statement.setInt(1, department.getBankId());
-            statement.setInt(2, department.getAddressId());
-            statement.setInt(3, department.getScheduleId());
+            statement.setInt(1, department.getBank().getId());
+            statement.setInt(2, department.getAddress().getId());
+            statement.setInt(3, department.getSchedule().getId());
             int st = statement.executeUpdate();
             LOGGER.info(st + " records inserted");
         } catch (SQLException throwables) {
@@ -56,9 +56,9 @@ public class DepartmentsDAO extends AbstractDAO implements IDepartmentsDAO {
     public void updateDepartment(Departments department) {
         try {
             PreparedStatement statement = getConnection().prepareStatement("UPDATE departments SET bankId = ?, addressId = ?, scheduleId = ? WHERE id = ?");
-            statement.setInt(1, department.getBankId());
-            statement.setInt(2, department.getAddressId());
-            statement.setInt(3, department.getScheduleId());
+            statement.setInt(1, department.getBank().getId());
+            statement.setInt(2, department.getAddress().getId());
+            statement.setInt(3, department.getSchedule().getId());
             statement.executeUpdate();
             LOGGER.info("Successfully updated");
         } catch (SQLException throwables) {
@@ -90,9 +90,9 @@ public class DepartmentsDAO extends AbstractDAO implements IDepartmentsDAO {
             while (resultSet.next()){
                 Departments department = new Departments();
                 department.setId(resultSet.getInt("id"));
-                department.setBankId(resultSet.getInt("bankId"));
-                department.setAddressId(resultSet.getInt("addressId"));
-                department.setScheduleId(resultSet.getInt("scheduleId"));
+                department.setBank(new BanksDAO().getBankByID(resultSet.getInt("bankId")));
+                department.setAddress(new AddressesDAO().getAddressByID(resultSet.getInt("addressId")));
+                department.setSchedule(new SchedulesDAO().getScheduleByID(resultSet.getInt("scheduleId")));
                 departmentsList.add(department);
             }
         }catch (SQLException throwables){

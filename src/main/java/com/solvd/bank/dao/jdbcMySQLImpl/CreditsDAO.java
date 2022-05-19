@@ -3,6 +3,7 @@ package com.solvd.bank.dao.jdbcMySQLImpl;
 import com.solvd.bank.dao.ICreditsDAO;
 import com.solvd.bank.models.Banks;
 import com.solvd.bank.models.Cards;
+import com.solvd.bank.models.CreditTypes;
 import com.solvd.bank.models.Credits;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,9 +26,9 @@ public class CreditsDAO extends  AbstractDAO implements ICreditsDAO {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     credit.setId(resultSet.getInt("id"));
-                    credit.setClientId(resultSet.getInt("clientId"));
-                    credit.setBankId(resultSet.getInt("bankId"));
-                    credit.setCreditTypeId(resultSet.getInt("creditTypeId"));
+                    credit.setClient(new ClientsDAO().getClientByID(resultSet.getInt("clientId")));
+                    credit.setBank(new BanksDAO().getBankByID(resultSet.getInt("bankId")));
+                    credit.setCreditType(new CreditTypesDAO().getCreditTypeByID(resultSet.getInt("creditTypeId")));
                     credit.setRate(resultSet.getDouble("rate"));
                     credit.setTerm(resultSet.getInt("term"));
                     credit.setMaximumAmount(resultSet.getInt("maximumAmount"));
@@ -44,9 +45,9 @@ public class CreditsDAO extends  AbstractDAO implements ICreditsDAO {
         try {
             PreparedStatement statement = getConnection().prepareStatement("INSERT INTO " +
                     "credits (clientId,bankId,creditTypeId,rate,term,maximumAmount) VALUES (?,?,?,?,?,?)");
-            statement.setInt(1, credit.getClientId());
-            statement.setInt(2, credit.getBankId());
-            statement.setInt(3, credit.getCreditTypeId());
+            statement.setInt(1, credit.getClient().getId());
+            statement.setInt(2, credit.getBank().getId());
+            statement.setInt(3, credit.getCreditType().getId());
             statement.setDouble(4, credit.getRate());
             statement.setInt(5, credit.getTerm());
             statement.setInt(6, credit.getMaximumAmount());
@@ -62,9 +63,9 @@ public class CreditsDAO extends  AbstractDAO implements ICreditsDAO {
     public void updateCredit(Credits credit) {
         try {
             PreparedStatement statement = getConnection().prepareStatement("UPDATE credits SET clientId = ?, bankId = ?, creditTypeId = ?,rate = ?,term = ?,maximumAmount = ? WHERE id = ?");
-            statement.setInt(1, credit.getClientId());
-            statement.setInt(2, credit.getBankId());
-            statement.setInt(3, credit.getCreditTypeId());
+            statement.setInt(1, credit.getClient().getId());
+            statement.setInt(2, credit.getBank().getId());
+            statement.setInt(3, credit.getCreditType().getId());
             statement.setDouble(4, credit.getRate());
             statement.setInt(5, credit.getTerm());
             statement.setInt(6, credit.getMaximumAmount());

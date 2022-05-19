@@ -28,7 +28,7 @@ public class ClientsDAO extends AbstractDAO implements IClientsDAO {
                     client.setName(resultSet.getString("name"));
                     client.setSurname(resultSet.getString("surname"));
                     client.setAge(resultSet.getInt("age"));
-                    client.setAddressId(resultSet.getInt("addressId"));
+                    client.setAddress(new AddressesDAO().getAddressByID(resultSet.getInt("addressId")));
                 }
             }
         }catch (SQLException throwables){
@@ -45,7 +45,7 @@ public class ClientsDAO extends AbstractDAO implements IClientsDAO {
             statement.setString(1, client.getName());
             statement.setString(2, client.getSurname());
             statement.setInt(3, client.getAge());
-            statement.setInt(4, client.getAddressId());
+            statement.setInt(4, client.getAddress().getId());
             int st = statement.executeUpdate();
             LOGGER.info(st + " records inserted");
         } catch (SQLException throwables) {
@@ -60,7 +60,7 @@ public class ClientsDAO extends AbstractDAO implements IClientsDAO {
             PreparedStatement statement = getConnection().prepareStatement("UPDATE clients SET name = ?, surname = ?, age = ?, addressId = ? WHERE id = ?");
             statement.setString(1, client.getName());
             statement.setString(2, client.getSurname());
-            statement.setInt(3, client.getAddressId());
+            statement.setInt(3, client.getAddress().getId());
             statement.setInt(4, client.getId());
             statement.executeUpdate();
             LOGGER.info("Successfully updated");

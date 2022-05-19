@@ -2,6 +2,7 @@ package com.solvd.bank.dao.jdbcMySQLImpl;
 
 import com.solvd.bank.dao.IAccountsDAO;
 import com.solvd.bank.models.Accounts;
+import com.solvd.bank.models.Clients;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,8 +23,8 @@ public class AccountsDAO extends  AbstractDAO implements IAccountsDAO {
             try (ResultSet resultSet = statement.executeQuery()) {
                 while (resultSet.next()) {
                     account.setId(resultSet.getInt("id"));
-                    account.setClientId(resultSet.getInt("clientId"));
-                    account.setAccountTypeId(resultSet.getInt("accountTypeId"));
+                    account.setClient(new ClientsDAO().getClientByID(resultSet.getInt("clientId")));
+                    account.setAccountType(new AccountTypesDAO().getAccountTypeByID(resultSet.getInt("accountTypeId")));
                     account.setNumber(resultSet.getString("number"));
                 }
             }
@@ -38,8 +39,8 @@ public class AccountsDAO extends  AbstractDAO implements IAccountsDAO {
         try {
             PreparedStatement statement = getConnection().prepareStatement("INSERT INTO " +
                     "accounts (clientId,accountTypeId,number) VALUES (?,?,?)");
-            statement.setInt(1, account.getClientId());
-            statement.setInt(2, account.getAccountTypeId());
+            statement.setInt(1, account.getClient().getId());
+            statement.setInt(2, account.getAccountType().getId());
             statement.setString(3, account.getNumber());
             int st = statement.executeUpdate();
             LOGGER.info(st + " records inserted");
@@ -54,8 +55,8 @@ public class AccountsDAO extends  AbstractDAO implements IAccountsDAO {
         try {
             PreparedStatement statement = getConnection().prepareStatement("UPDATE accounts " +
                     "SET clientId = ?, accountTypeId = ?, number = ? WHERE id = ?");
-            statement.setInt(1, account.getClientId());
-            statement.setInt(2, account.getAccountTypeId());
+            statement.setInt(1, account.getClient().getId());
+            statement.setInt(2, account.getAccountType().getId());
             statement.setString(3, account.getNumber());
             statement.setInt(4, account.getId());
             statement.executeUpdate();
@@ -89,8 +90,8 @@ public class AccountsDAO extends  AbstractDAO implements IAccountsDAO {
             while (resultSet.next()){
                 Accounts account = new Accounts();
                 account.setId(resultSet.getInt("id"));
-                account.setClientId(resultSet.getInt("clientId"));
-                account.setAccountTypeId(resultSet.getInt("accountTypeId"));
+                account.setClient(new ClientsDAO().getClientByID(resultSet.getInt("clientId")));
+                account.setAccountType(new AccountTypesDAO().getAccountTypeByID(resultSet.getInt("accountTypeId")));
                 account.setNumber(resultSet.getString("number"));
                 accountsList.add(account);
             }
