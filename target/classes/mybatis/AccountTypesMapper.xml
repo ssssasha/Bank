@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.bank.dao.IAccountTypesDAO">
+    <resultMap id="accountTypesMap" type="com.solvd.bank.models.AccountTypes">
+        <id property="id" column="id" javaType="int"/>
+        <result property="name" column="name"/>
+    </resultMap>
+
+    <select id="getAccountTypeByID" resultMap="accountTypesMap">
+        SELECT * FROM accounttypes WHERE id = #{id}
+    </select>
+
+    <insert id="createAccountType" useGeneratedKeys="true" keyProperty="id" parameterType="AccountTypes">
+        INSERT INTO accounttypes (name) VALUES (#{name})
+    </insert>
+
+    <update id="updateAccountType" parameterType="AccountTypes">
+        UPDATE accounttypes SET name = #{name}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteAccountType" parameterType="AccountTypes">
+        DELETE FROM accounttypes WHERE id = #{id}
+    </delete>
+
+    <select id="getAllAccountTypes" resultMap="accountTypesMap">
+        SELECT * FROM accounttypes
+    </select>
+</mapper>

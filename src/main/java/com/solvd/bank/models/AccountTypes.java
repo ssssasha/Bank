@@ -11,6 +11,10 @@ public class AccountTypes {
     public AccountTypes() {
     }
 
+    public AccountTypes(String name) {
+        this.name = name;
+    }
+
     public AccountTypes(int id, String name, List<Accounts> accounts) {
         this.id = id;
         this.name = name;

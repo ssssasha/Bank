@@ -9,6 +9,7 @@ C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\dao\IDeposits
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\dao\jdbcMySQLImpl\ClientsDAO.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\models\AccountTypes.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\models\Cities.java
+C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\jaxb\XMLToObject.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\models\Cards.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\dao\IBanksDAO.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\jaxb\Executor.java
@@ -27,6 +28,7 @@ C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\models\Credit
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\models\CreditTypes.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\models\Accounts.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\dao\IAccountsDAO.java
+C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\jackson\ToJSON.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\dao\ICardTypesDAO.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\dao\IDepartmentsDAO.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\dao\jdbcMySQLImpl\AddressesDAO.java
@@ -35,6 +37,7 @@ C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\dao\jdbcMySQL
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\jaxb\Schedule.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\dom\DomReader.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\DBConnection.java
+C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\jackson\FromJSON.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\dao\jdbcMySQLImpl\SchedulesDAO.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\dao\jdbcMySQLImpl\BanksDAO.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\Main.java
@@ -44,6 +47,7 @@ C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\dao\jdbcMySQL
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\dao\jdbcMySQLImpl\CardTypesDAO.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\dao\jdbcMySQLImpl\AbstractDAO.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\dao\jdbcMySQLImpl\DepositsDAO.java
+C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\jackson\Schedule.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\models\Departments.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\dao\ICreditTypesDAO.java
 C:\Users\User\IdeaProjects\SQLProject\src\main\java\com\solvd\bank\models\Addresses.java

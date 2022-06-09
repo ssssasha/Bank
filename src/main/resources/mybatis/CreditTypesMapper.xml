@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solvd.bank.dao.ICreditTypesDAO">
+    <resultMap id="creditTypesResultMap" type="CreditTypes">
+        <id property="id" column="id" javaType="int"/>
+        <result property="name" column="name"/>
+    </resultMap>
+
+    <select id="getCreditTypeByID" resultMap="creditTypesResultMap">
+        SELECT * FROM creditTypes WHERE id = #{id}
+    </select>
+
+    <insert id="createCreditType" useGeneratedKeys="true" keyProperty="id" parameterType="CreditTypes">
+        INSERT INTO creditTypes (name) VALUES (#{name})
+    </insert>
+
+    <update id="updateCreditType" parameterType="CreditTypes">
+        UPDATE creditTypes SET name = #{name}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteCreditType" parameterType="CreditTypes">
+        DELETE FROM creditTypes WHERE id = #{id}
+    </delete>
+
+    <select id="getAllCreditTypes" resultMap="creditTypesResultMap">
+        SELECT * FROM creditTypes
+    </select>
+</mapper>

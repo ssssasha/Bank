@@ -45,12 +45,12 @@ public class Main {
 //          createAccountsDAO.createAccount(newAccount);
 
         //getting a list of Accounts by client id
-        AccountsDAO accounts = new AccountsDAO();
-        List<Accounts> accountsList;
-        accountsList = accounts.getAccountByClientId(3);
-        for (Accounts el : accountsList){
-            LOGGER.info(el);
-        }
+//        AccountsDAO accounts = new AccountsDAO();
+//        List<Accounts> accountsList;
+//        accountsList = accounts.getAccountByClientId(3);
+//        for (Accounts el : accountsList){
+//            LOGGER.info(el);
+//        }
         //deleting
 //        AccountsDAO deleteAccountsDAO = new AccountsDAO();
 //        Accounts acountToDelete = new Accounts(149);
@@ -89,12 +89,12 @@ public class Main {
 //        }
 //
         //getCards
-        ICardsDAO cardDAO = new CardsDAO();
-        List<Cards> cardsList = new ArrayList<>();
-        cardsList = cardDAO.getCards();
-        for (Cards el: cardsList){
-            LOGGER.info(el);
-        }
+//        ICardsDAO cardDAO = new CardsDAO();
+//        List<Cards> cardsList = new ArrayList<>();
+//        cardsList = cardDAO.getCards();
+//        for (Cards el: cardsList){
+//            LOGGER.info(el);
+//        }
 //
 //        //getting a list of Deposits
 //        DepositsDAO depositsDAO = new DepositsDAO();
@@ -114,5 +114,6 @@ public class Main {
         //reading
 //        CreditsDAO getCreditsDAO = new CreditsDAO();
 //        LOGGER.info(getCreditsDAO.getCreditByID(1));
+
     }
 }
