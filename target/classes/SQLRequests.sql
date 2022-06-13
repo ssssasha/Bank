@@ -70,6 +70,10 @@ UPDATE  credits
 SET   maximumAmount = 200000
 WHERE  bankId = 3;
 
+UPDATE  clients
+SET   age = 17
+WHERE  id = 4;
+
 UPDATE  schedules
 SET   openingTime = '8:00'
 WHERE day = 'Tuesday';

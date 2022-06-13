@@ -1,8 +1,13 @@
 package com.solvd.bank.models;
 
+import com.solvd.bank.patterns.listener.ActionListener;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.List;
 
-public class Clients {
+public class Clients implements ActionListener {
+    private final static Logger LOGGER = LogManager.getLogger(Clients.class);
     private int id;
     private String name;
     private String surname;
@@ -17,14 +22,6 @@ public class Clients {
     }
 
     public Clients(String name, String surname, int age, Addresses address) {
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
-        this.address = address;
-    }
-
-    public Clients(int id, String name, String surname, int age, Addresses address) {
-        this.id = id;
         this.name = name;
         this.surname = surname;
         this.age = age;
@@ -120,5 +117,12 @@ public class Clients {
     public String toString() {
         return "\n id: " + getId()+ "\n " + "name: " + getName() + "\n " + "surname: " + getSurname()
                 + "\n " + "age: " + getAge() + "\n\n " + "address: " + getAddress();
+    }
+
+    @Override
+    public void doSomeAction() {
+        LOGGER.info("Welcome to bank " + this.name + " " + this.surname + "!");
+        if (this.age <18) LOGGER.info("Unfortunately, we don't provide services for underage clients");
+        if (this.age >=18) LOGGER.info("Please, choose which service you want to use");
     }
 }

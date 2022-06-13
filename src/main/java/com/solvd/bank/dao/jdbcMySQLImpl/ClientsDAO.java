@@ -4,6 +4,7 @@ import com.solvd.bank.dao.IClientsDAO;
 import com.solvd.bank.models.ATMs;
 import com.solvd.bank.models.Banks;
 import com.solvd.bank.models.Clients;
+import com.solvd.bank.patterns.listener.ActionListener;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,6 +17,12 @@ import java.util.List;
 public class ClientsDAO extends AbstractDAO implements IClientsDAO {
 
     private static final Logger LOGGER = LogManager.getLogger(ClientsDAO.class);
+
+    List<ActionListener> listeners = new ArrayList<>();
+
+    public void addListener(ActionListener listener){
+        listeners.add(listener);
+    }
 
     public Clients getClientByID(int id) {
         Clients client = new Clients();
@@ -30,6 +37,8 @@ public class ClientsDAO extends AbstractDAO implements IClientsDAO {
                     client.setAge(resultSet.getInt("age"));
                     client.setAddress(new AddressesDAO().getAddressByID(resultSet.getInt("addressId")));
                 }
+                addListener(client);
+                for (ActionListener ls : listeners) ls.doSomeAction();
             }
         }catch (SQLException throwables){
             throwables.printStackTrace();

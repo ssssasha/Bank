@@ -1,5 +1,7 @@
 package com.solvd.bank.models;
 
+import com.solvd.bank.patterns.listener.ActionListener;
+
 import java.util.List;
 
 public class AccountTypes {
@@ -49,4 +51,5 @@ public class AccountTypes {
     public String toString() {
         return "\n id: " + getId()+ "\n " + "name: " + getName();
     }
+
 }
